@@ -1,20 +1,7 @@
 import googleLogo from "../assets/google-logo.png";
 import githubLogo from "../assets/github-logo.png";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import auth from "../firebase.config";
 
 const Login = () => {
-
-    const handleGoogleLogin = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err.message);
-        })
-    }
 
     return (
     <section>
@@ -47,7 +34,7 @@ const Login = () => {
             </div>
 
             {/* login with google or github */}
-            <button onClick={handleGoogleLogin} className="w-full bg-white shadow-lg p-3 border border-gray-100 rounded-lg mb-5">
+            <button className="w-full bg-white shadow-lg p-3 border border-gray-100 rounded-lg mb-5">
               <div className="flex items-center justify-center gap-5">
                 <img className="w-8" src={googleLogo} alt="google logo" />
                 <p className="font-medium">Login With Google</p>
