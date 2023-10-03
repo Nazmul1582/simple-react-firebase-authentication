@@ -1,7 +1,17 @@
 import googleLogo from "../assets/google-logo.png";
 import githubLogo from "../assets/github-logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+    const {googleLogin} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleLogin = (socialMedia) => {
+        socialMedia()
+        navigate("/")
+    } 
 
     return (
     <section>
@@ -34,7 +44,7 @@ const Login = () => {
             </div>
 
             {/* login with google or github */}
-            <button className="w-full bg-white shadow-lg p-3 border border-gray-100 rounded-lg mb-5">
+            <button onClick={() => handleLogin(googleLogin)} className="w-full bg-white shadow-lg p-3 border border-gray-100 rounded-lg mb-5">
               <div className="flex items-center justify-center gap-5">
                 <img className="w-8" src={googleLogo} alt="google logo" />
                 <p className="font-medium">Login With Google</p>
