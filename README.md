@@ -5,3 +5,7 @@
 
 ### login page
 ![loginPage](./src/assets/login-page.png)
+
+
+### After login with google
+![HomePage](./src/assets/after-login-with-google.png)
