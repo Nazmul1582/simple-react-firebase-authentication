@@ -2,10 +2,10 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <header className="bg-rose-100">
+    <header className="bg-blue-100">
       <div className="container mx-auto">
         <div className="flex justify-between py-5">
-          <div className="text-2xl font-bold text-rose-500">
+          <div className="text-2xl font-bold text-blue-500">
             <h2>Logo</h2>
           </div>
           <nav>
