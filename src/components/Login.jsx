@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-    const {googleLogin} = useContext(AuthContext);
+    const {googleLogin, githubLogin} = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogin = (socialMedia) => {
@@ -51,7 +51,7 @@ const Login = () => {
               </div>
             </button>
 
-            <button className="w-full bg-white shadow-lg p-3 border border-gray-100 rounded-lg">
+            <button onClick={() => handleLogin(githubLogin)} className="w-full bg-white shadow-lg p-3 border border-gray-100 rounded-lg">
               <div className="flex items-center justify-center gap-5">
                 <img className="w-8" src={githubLogo} alt="google logo" />
                 <p className="font-medium">Login With Github</p>
