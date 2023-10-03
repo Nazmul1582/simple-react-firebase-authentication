@@ -13,14 +13,12 @@ const Login = () => {
               type="email"
               name="email"
               placeholder="Enter your email"
-              required
             />
             <input
               className="w-full border border-gray-200 p-3 rounded-lg mb-5 focus:outline-0"
               type="password"
               name="password"
               placeholder="Enter your password"
-              required
             />
             <button className="w-full font-semibold bg-blue-500 text-white p-3 rounded-lg mb-5 shadow-md">
               Login
