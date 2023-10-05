@@ -7,19 +7,37 @@ const Home = () => {
   const { user, loading, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    logOut();
+    logOut()
+      .then(() => (
+        <div className="toast toast-top toast-start">
+          <div className="alert alert-info">
+            <span>New mail arrived.</span>
+          </div>
+          <div className="alert alert-success">
+            <span>LogOut successfully.</span>
+          </div>
+        </div>
+      ))
+      .catch((err) => (
+        <div className="toast toast-top toast-start">
+          <div className="alert alert-error">
+            <span>{err.message}</span>
+          </div>
+        </div>
+      ));
     navigate("/login");
   };
-  
+
   return (
     <section>
       <div className="min-h-[80vh] flex flex-col gap-10 justify-center items-center">
         <h1 className="text-3xl font-bold">
           Simple React Firebase Authentication
         </h1>
-        {loading ? (
+        {loading && (
           <span className="loading loading-spinner text-success loading-lg"></span>
-        ) : (
+        )}
+        {user && (
           <div className="bg-white shadow-lg border border-gray-100 p-5 rounded-lg">
             <img
               className="mx-auto w-20 h-20 rounded-full mb-5"
