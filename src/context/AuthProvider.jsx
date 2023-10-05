@@ -45,8 +45,8 @@ const AuthProvider = ({ children }) => {
     });
   };
 
-  // email varification
-  const emailVarification = currentUser => sendEmailVerification(currentUser);
+  // email verification
+  const emailVerification = currentUser => sendEmailVerification(currentUser);
 
   // login
   const loginUser = (email, password) =>
@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     githubLogin,
     createUser,
-    emailVarification,
+    emailVerification,
     updateUser,
     loginUser,
     resetPassword,

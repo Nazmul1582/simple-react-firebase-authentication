@@ -7,7 +7,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
-  const { createUser, updateUser, emailVarification } = useContext(AuthContext);
+  const { createUser, updateUser, emailVerification } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -41,14 +41,14 @@ const Register = () => {
         updateUser(res.user, name);
 
         // email varification
-        emailVarification(res.user)
+        emailVerification(res.user)
         .then(() => {
-          console.log("Please check your email and varified your account!");
+          console.log("Please check your email and verified your account!");
         })
         .catch(err => {
           setError(err.message)
         })
-        
+
         // navigate to home page
         navigate("/");
       })

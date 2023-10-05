@@ -25,8 +25,12 @@ const Login = () => {
     setError("");
 
     loginUser(email, password)
-      .then(() => {
-        console.log("successfully logged in");
+      .then((res) => {
+        if(res.user.emailVerified){
+          console.log("successfully logged in");
+        }else{
+          alert("Please verified your email address!")
+        }
 
         // reset input fields
         e.target.reset();
