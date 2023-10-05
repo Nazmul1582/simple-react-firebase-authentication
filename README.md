@@ -20,3 +20,11 @@
 
 ### After login with google
 ![HomePage](./src/assets/after-login-with-google.png)
+
+
+## Before Login
+![beforeLogin](./src/assets/before-login.png)
+
+
+## After Login
+![afterLogin](./src/assets/after-login.png)
