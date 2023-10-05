@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../context/AuthProvider";
 
 const Register = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(false);
+  const {handleLogin} = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const handleRegister = e => {
     e.preventDefault();
@@ -12,6 +15,14 @@ const Register = () => {
     const password = e.target.password.value;
     const terms = e.target.terms.checked;
     console.log(name, email, password, terms);
+    handleLogin(email, password)
+    .then(res => {
+      console.log(res);
+      navigate("/")
+    })
+    .catch(err => {
+      console.log(err.message);
+    })
   }
 
   return (
