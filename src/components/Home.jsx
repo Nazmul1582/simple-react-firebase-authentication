@@ -1,15 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const { user, loading, logOut } = useContext(AuthContext);
-
-  const handleLogOut = () => {
-    logOut();
-    navigate("/login");
-  };
+  const { user, loading } = useContext(AuthContext);
 
   return (
     <section>
@@ -31,12 +24,6 @@ const Home = () => {
               <h2 className="text-xl font-semibold">{user.displayName}</h2>
               <p className="text-gray-400">{user.email}</p>
             </div>
-            <button
-              onClick={handleLogOut}
-              className="w-full font-semibold bg-blue-500 text-white p-3 rounded-lg mt-5 shadow-md"
-            >
-              Logout
-            </button>
           </div>
         )}
       </div>

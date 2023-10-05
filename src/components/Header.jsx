@@ -1,9 +1,15 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
+  const navigate = useNavigate();
+  
+  const handleLogOut = () => {
+    logOut();
+    navigate("/login");
+  };
 
   return (
     <header className="bg-blue-100">
@@ -17,6 +23,12 @@ const Header = () => {
               <li>
                 <NavLink to="/">Home</NavLink>
               </li>
+              <li>
+                <NavLink to="/about">About</NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact">Contact</NavLink>
+              </li>
             </ul>
           </nav>
           {user ? (
@@ -27,9 +39,15 @@ const Header = () => {
                 src={user.photoURL}
                 alt={`photo of ${user.displayName}`}
               />
-              <button onClick={logOut} className="btn btn-info">Logout</button>
+              <button onClick={handleLogOut} className="btn btn-info">
+                Logout
+              </button>
             </div>
-          ) : <Link to="/login"><button className="btn btn-info">Login</button></Link> }
+          ) : (
+            <Link to="/login">
+              <button className="btn btn-info">Login</button>
+            </Link>
+          )}
         </div>
       </div>
     </header>
