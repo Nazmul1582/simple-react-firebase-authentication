@@ -15,7 +15,15 @@ const Register = () => {
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    // const terms = e.target.terms.checked;
+    const terms = e.target.terms.checked;
+
+    // reset error
+    setError("")
+    
+    if (!terms) {
+      setError("Your have to accept your terms and conditions for register!");
+      return;
+    }
 
     if (password.length < 6) {
       setError("Password must be 6 characters or longer!");
