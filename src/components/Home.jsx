@@ -16,7 +16,7 @@ const Home = () => {
         {user && (
           <div className="bg-white shadow-lg border border-gray-100 p-5 rounded-lg">
             <img
-              className="mx-auto w-20 h-20 rounded-full mb-5"
+              className="mx-auto w-20 h-20 rounded-full mb-5 object-cover"
               src={user.photoURL}
               alt={user.displayName}
             />

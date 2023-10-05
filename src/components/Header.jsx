@@ -35,7 +35,7 @@ const Header = () => {
             <div className="flex items-center gap-3">
               <p className="font-semibold">{user.displayName}</p>
               <img
-                className="w-10 h-10 rounded-full"
+                className="w-10 h-10 rounded-full object-cover"
                 src={user.photoURL}
                 alt={`photo of ${user.displayName}`}
               />

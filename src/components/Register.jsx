@@ -5,25 +5,32 @@ import { AuthContext } from "../context/AuthProvider";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const {handleLogin} = useContext(AuthContext)
-  const navigate = useNavigate()
+  const { createUser, updateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const handleRegister = e => {
+  const handleRegister = (e) => {
+
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const terms = e.target.terms.checked;
     console.log(name, email, password, terms);
-    handleLogin(email, password)
+
+    createUser(email, password)
     .then(res => {
-      console.log(res);
+      console.log(res.user);
+
+      // update profile
+      updateUser(res.user, name)
+
+      // navigate to home page
       navigate("/")
     })
     .catch(err => {
       console.log(err.message);
     })
-  }
+  };
 
   return (
     <section>
@@ -53,10 +60,11 @@ const Register = () => {
                 placeholder="Enter your password"
                 required
               />
-              <div onClick={() => setShowPassword(!showPassword)} className="absolute top-4 right-2 cursor-pointer">
-                {
-                  showPassword ? <FaEyeSlash /> : <FaEye />
-                }
+              <div
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute top-4 right-2 cursor-pointer"
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
             </div>
             <label className="flex items-center gap-3 mb-5">
