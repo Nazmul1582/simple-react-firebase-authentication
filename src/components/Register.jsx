@@ -5,31 +5,39 @@ import { AuthContext } from "../context/AuthProvider";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+
   const { createUser, updateUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
-
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const terms = e.target.terms.checked;
-    console.log(name, email, password, terms);
+    // const terms = e.target.terms.checked;
+
+    if (password.length < 6) {
+      setError("Password must be 6 characters or longer!");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setError("Your password should have at lest one uppercase charachter!");
+      return;
+    }
 
     createUser(email, password)
-    .then(res => {
-      console.log(res.user);
+      .then((res) => {
+        console.log(res.user);
 
-      // update profile
-      updateUser(res.user, name)
+        // update profile
+        updateUser(res.user, name);
 
-      // navigate to home page
-      navigate("/")
-    })
-    .catch(err => {
-      console.log(err.message);
-    })
+        // navigate to home page
+        navigate("/");
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   };
 
   return (
@@ -68,7 +76,7 @@ const Register = () => {
               </div>
             </div>
             <label className="flex items-center gap-3 mb-5">
-              <input type="checkbox" name="terms" required />
+              <input type="checkbox" name="terms" />
               Accept our terms and conditions.
             </label>
             <button className="w-full font-semibold bg-blue-500 text-white p-3 rounded-lg mb-5 shadow-md">
@@ -81,6 +89,7 @@ const Register = () => {
               </Link>
             </p>
           </form>
+          {error && <p className="text-red-500">{error}</p>}
         </div>
       </div>
     </section>
