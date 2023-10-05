@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthProvider";
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+
   const handleLogOut = () => {
     logOut();
     navigate("/login");
@@ -26,9 +26,16 @@ const Header = () => {
               <li>
                 <NavLink to="/about">About</NavLink>
               </li>
-              <li>
-                <NavLink to="/profile">Profile</NavLink>
-              </li>
+              {user && (
+                <>
+                <li>
+                  <NavLink to="/dashboard">Dashboard</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/profile">Profile</NavLink>
+                </li>
+                </>
+              )}
               <li>
                 <NavLink to="/contact">Contact</NavLink>
               </li>
@@ -49,11 +56,11 @@ const Header = () => {
           ) : (
             <div className="flex gap-5">
               <Link to="/login">
-              <button className="btn btn-info">Login</button>
-            </Link>
-            <Link to="/register">
-              <button className="btn btn-info">Register</button>
-            </Link>
+                <button className="btn btn-info">Login</button>
+              </Link>
+              <Link to="/register">
+                <button className="btn btn-info">Register</button>
+              </Link>
             </div>
           )}
         </div>

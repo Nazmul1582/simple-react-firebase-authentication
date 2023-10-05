@@ -1,8 +1,14 @@
 # Simple React Firebase Authentication
 
 - This is a simple react firebase authentication project. 
-- This project has built using react, vite, firebase, react-router etc.
+- This project has built using react, vite, firebase, tailwindcss, daisyui, react-router, react-icons.
 
+## Some features 
+
+- User can login with Google, Github, EmailAndPassword and register with email and password
+- Only logged-in user can access private routes (profile and dashboard) etc.
+- user's email varification.
+- Reset or fogotten password etc.
 
 ## Important Notes
 
@@ -18,9 +24,9 @@
 ![loginPage](./src/assets/login-page.png)
 
 
-## Before Login
-![beforeLogin](./src/assets/before-login.png)
+## Before Login Or Register
+![beforeLogin](./src/assets/before-login-or-register.png)
 
 
-## After Login
-![afterLogin](./src/assets/after-login.png)
+## After Login Or Register
+![afterLogin](./src/assets/after-login-or-register.png)

@@ -10,6 +10,8 @@ import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
 import Register from "./components/Register.jsx";
 import Profile from "./components/Profile.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
+import Dashboard from "./components/Dashboard.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,8 +39,12 @@ const router = createBrowserRouter([
         element: <Register />
       },
       {
-        path: "/profile",
-        element: <Profile />
+        path: "profile",
+        element: <PrivateRoute><Profile /></PrivateRoute>
+      },
+      {
+        path: "dashboard",
+        element: <PrivateRoute><Dashboard /></PrivateRoute>
       }
     ],
   },
