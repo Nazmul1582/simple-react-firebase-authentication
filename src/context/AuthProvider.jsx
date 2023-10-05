@@ -8,7 +8,8 @@ const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true)
 
     // login with google
     const googleLogin = () => {
@@ -25,17 +26,20 @@ const AuthProvider = ({children}) => {
         return signOut(auth);
     }
 
-    // set current user
+    // observer
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log(currentUser );
             setUser(currentUser);
+            setLoading(false);
         })
+        // clean up function
         return unsubscribe;
     }, [])
 
     const value = {
         user,
+        loading,
         googleLogin,
         logOut,
         githubLogin
