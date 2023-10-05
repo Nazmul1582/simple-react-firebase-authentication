@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-// import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false)
 
   const handleRegister = e => {
     e.preventDefault();
@@ -35,14 +37,16 @@ const Register = () => {
             <div className="relative">
               <input
                 className="w-full border border-gray-200 p-3 rounded-lg mb-5 focus:outline-0"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 placeholder="Enter your password"
                 required
               />
-              {/* <div className="absolute top-4 right-2 cursor-pointer">
-                <FaEyeSlash /> <FaEye />
-              </div> */}
+              <div onClick={() => setShowPassword(!showPassword)} className="absolute top-4 right-2 cursor-pointer">
+                {
+                  showPassword ? <FaEyeSlash /> : <FaEye />
+                }
+              </div>
             </div>
             <label className="flex items-center gap-3 mb-5">
               <input type="checkbox" name="terms" required />
