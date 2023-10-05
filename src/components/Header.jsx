@@ -44,9 +44,14 @@ const Header = () => {
               </button>
             </div>
           ) : (
-            <Link to="/login">
+            <div className="flex gap-5">
+              <Link to="/login">
               <button className="btn btn-info">Login</button>
             </Link>
+            <Link to="/register">
+              <button className="btn btn-info">Register</button>
+            </Link>
+            </div>
           )}
         </div>
       </div>

@@ -8,6 +8,7 @@ import Login from "./components/Login.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 import About from "./components/About.jsx";
 import Contact from "./components/Contact.jsx";
+import Register from "./components/Register.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
       },
       {
         path: "login",
-        element: <Login />,
+        element: <Login />
       },
+      {
+        path: "register",
+        element: <Register />
+      }
     ],
   },
 ]);

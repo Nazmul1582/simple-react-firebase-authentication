@@ -2,7 +2,7 @@ import googleLogo from "../assets/google-logo.png";
 import githubLogo from "../assets/github-logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const {googleLogin, githubLogin} = useContext(AuthContext);
@@ -57,6 +57,12 @@ const Login = () => {
                 <p className="font-medium">Login With Github</p>
               </div>
             </button>
+            <p className="mt-5">
+            Already have an account? Please{" "}
+            <Link className="text-blue-500 underline" to="/register">
+              Register
+            </Link>
+          </p>
         </div>
       </div>
     </section>
