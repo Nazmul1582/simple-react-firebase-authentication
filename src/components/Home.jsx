@@ -7,24 +7,7 @@ const Home = () => {
   const { user, loading, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
-    logOut()
-      .then(() => (
-        <div className="toast toast-top toast-start">
-          <div className="alert alert-info">
-            <span>New mail arrived.</span>
-          </div>
-          <div className="alert alert-success">
-            <span>LogOut successfully.</span>
-          </div>
-        </div>
-      ))
-      .catch((err) => (
-        <div className="toast toast-top toast-start">
-          <div className="alert alert-error">
-            <span>{err.message}</span>
-          </div>
-        </div>
-      ));
+    logOut();
     navigate("/login");
   };
 
