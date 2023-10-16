@@ -12,6 +12,7 @@ import Register from "./components/Register.jsx";
 import Profile from "./components/Profile.jsx";
 import PrivateRoute from "./components/PrivateRoute.jsx";
 import Dashboard from "./components/Dashboard.jsx";
+import Shop from "./components/Shop.jsx";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home />
       },
       {
         path: "about",
         element: <About />
+      },
+      {
+        path: "shop",
+        element: <PrivateRoute><Shop /></PrivateRoute>
       },
       {
         path:"contact",
