@@ -2,7 +2,7 @@ import googleLogo from "../assets/google-logo.png";
 import githubLogo from "../assets/github-logo.png";
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../context/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState("");
@@ -10,6 +10,7 @@ const Login = () => {
     useContext(AuthContext);
   const navigate = useNavigate();
   const emailRef = useRef();
+  const location = useLocation();
 
   const handleSocialLogin = (socialMedia) => {
     socialMedia();
@@ -35,8 +36,8 @@ const Login = () => {
         // reset input fields
         e.target.reset();
 
-        // redirect to home
-        navigate("/");
+        // redirect to home or expected route
+        navigate(location.state ? location.state : "/");
       })
       .catch((err) => {
         setError(err.message);
